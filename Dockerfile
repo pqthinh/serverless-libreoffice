@@ -1,8 +1,8 @@
 FROM amazonlinux:2.0.20190508 as lobuild
 
 # see https://stackoverflow.com/questions/2499794/how-to-fix-a-locale-setting-warning-from-perl
-ENV LC_CTYPE=en_US.UTF-8
-ENV LC_ALL=en_US.UTF-8
+ENV LC_CTYPE=ja_JP.UTF-8
+ENV LC_ALL=ja_JP.UTF-8
 
 ENV LIBREOFFICE_VERSION=6.2.1.2
 
@@ -138,7 +138,7 @@ RUN rm -rf ./instdir/share/gallery \
 # test if compilation was successful
 RUN echo "hello world" > a.txt \
     && ./instdir/program/soffice --headless --invisible --nodefault --nofirststartwizard \
-        --nolockcheck --nologo --norestore --convert-to pdf --outdir $(pwd) a.txt
+    --nolockcheck --nologo --norestore --convert-to pdf --outdir $(pwd) a.txt
 
 RUN tar -cvf /tmp/lo.tar instdir/
 
